@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+
+{%load static%}
+{%block contenido%}
+{% load crispy_forms_tags %}
+
+<div class="row m-2">
+    <div class="col-sm-12 col-md-6 offset-md-3">
+        <!-- <div class="card"> -->
+            <h1>Registrar Producto</h1>
+            <!-- <div class="card-body"> -->
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form | crispy}}
+        
+                    <div class="botonesFormulario d-flex justify-content-end">
+                        <button type="submit" class="btn btn-warning col-md-2 col-sm-12 ">Registrar</button>
+                        <button type="reset" class="btn-danger btn  ml-2 col-md-2 col-sm-12">Limpiar</button>
+                    </div>
+                </form>
+            <!-- </div>
+        </div> -->
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

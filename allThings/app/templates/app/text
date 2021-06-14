@@ -1,0 +1,61 @@
+<div class="container container-registro align-items-center">
+    <div class="row">
+        <div class="col-12">
+            <form method="POST" class="justify-content-center" id="formRegistroProducto" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1>Registrar Producto</h1>
+                <div class="form-row">
+                    <div class="form-group col-md-6 col-sm-12">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name ="nombre" class="form-control" id="txtNombre" placeholder="Nombre" >
+                    </div>
+                    <div class="form-group col-md-6 col-sm-12">
+                        <label for="codBarras">Codigo de Barras</label>
+                        <input type="number" class="form-control dinero" id="numCodBarras" placeholder="Codigo de Barras">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label for="precioCosto">Precio Costo</label>
+                        <input type="number" name="precioCosto" class="form-control dinero" id="txtPrecioCosto" placeholder="Precio costo">
+                    </div>
+                    <div class="form-group col-md-4 col-sm-12">
+                        <label for="precioVenta">Precio Venta</label>
+                        <input type="number" name="precioVenta" class="form-control dinero" id="txtPrecioVenta" placeholder="Precio Venta">
+                    </div>
+                </div>
+                <div class="form-group col-md-4 col-sm-12">
+                        <label for="marca">Marca</label>
+                        <select name="cboMarca" id="cboMarca">
+
+                            <option value="">Seleccionar</option>
+
+                            {% for m in marcas %}
+
+                            <option value="{{ m.id }}">{{ m.nombre }}</option>
+
+                            {%endfor%}
+                        </select>
+                        
+                    </div> 
+                <div class="form-row">
+                    <div class="form-group col-md-12 col-sm-12">
+                        <label for="txtDate">Fecha de Ingreso</label>
+                        <input type="date" name="txtDate" class="form-control" id="txtDate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+                <div class="form-group">
+                    <label for="txtDescripcion">Descripción</label>
+                    <textarea name="" id="txtDescripcion" cols="30" rows="8" class="col-12"></textarea>
+                </div>
+                <div class="botonesFormulario d-flex justify-content-end">
+                    <button type="submit" class="btn btn-warning col-md-2 col-sm-12 ">Registrar</button>
+                    <button type="reset" class="btn btn-warning ml-2 col-md-2 col-sm-12">Limpiar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

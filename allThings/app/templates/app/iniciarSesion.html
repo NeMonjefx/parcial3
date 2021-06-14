@@ -1,0 +1,50 @@
+{% extends 'app/base.html' %}
+
+{%load static%}
+{%block contenido%}
+{% load crispy_forms_tags %}
+
+<!-- <div class="row m-2"> -->
+    <!-- <div class="col-sm-12 col-md-6 offset-md-3"> -->
+        <!-- <div class="card"> -->
+            <!-- <div class="card-body"> -->
+                <!-- <form action="" method="POST" enctype="multipart/form-data"> -->
+                    <!-- {% csrf_token %}
+                    {{form | crispy}} -->
+        
+                    
+                    <!-- <div class="botonesFormulario d-flex justify-content-end">
+                        <a type="submit" class="btn btn-warning col-md-2 col-sm-12 ">Ingresar</button>
+                        <a  class="btn-danger btn  ml-2 col-md-2 col-sm-12" href="{% url 'registroUsuario' %}">Registrarme</a>
+                    </div>
+                </form> -->
+            <!-- </div>
+        </div> -->
+    <!-- </div>
+</div> -->
+
+
+<div class="container container-login ">
+    <div class="row">
+        <div class="col-12 ">
+            <form method="post" action="login.html" class="justify-content-center">
+                <h1>Iniciar Sesión</h1>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Correo Eléctronico <span class="asterisco">*</span></label>
+                    <input type="email" name="email" class="form-control "id="email" aria-describedby="emailHelp" placeholder="Correo Eléctronico">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Contraseña <span class="asterisco">*</span></label>
+                    <input type="password" class="form-control"  id="password" placeholder="Contraseña">
+                </div>
+                <div class="botonesFormulario d-flex justify-content-end">
+                    <a class="mr-1 btn btn-warning col-md-2 col-sm-12" id="btnIniciar" href="{% url 'home' %}">Iniciar Sesión</a>
+                    <a class="btn btn-danger col-se-12 col-md-2" href="{% url 'registroUsuario' %}">Registrarme</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,131 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!-- JQUERY -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="{% static 'app/styles/estiloss.css' %}">
+    
+    
+    <link rel="shortcut icon" href="favicon.png">
+    
+
+    <script src="https://kit.fontawesome.com/cf62b696b1.js" crossorigin="anonymous"></script>
+
+
+    <title>eCommerce - AllThings</title>
+</head>
+<body>
+    
+    <!-- NAVBAR -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'app/img/shop.svg'%}" width="40" height="40" class="d-inline-block align-top" alt="">
+        </a>
+        <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'app/img/logo.png'%}" widht="50" height="50" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home"></i> Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-tags"></i> Productos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'registroProducto' %}"><i class="fas fa-barcode"></i> Registrar Producto</a>
+                    <a class="dropdown-item" href="{% url 'listaProductos' %}"> <i class="fas fa-clipboard-list"></i> Lista de Productos</a>
+                    <a class="dropdown-item" href="{% url 'registrarMarca' %}"> <i class="fas fa-file-alt"></i> Registrar Marca</a>
+                    <a class="dropdown-item" href="{% url 'listaMarcas' %}"> <i class="fas fa-clipboard-list"></i> Lista de Marcas</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i> Usuario
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'registroUsuario' %}"><i class="far fa-file"></i> Registrarse</a>
+                    <a class="dropdown-item" href="{% url 'iniciarSesion' %}"> <i class="fas fa-sign-in-alt"></i> Iniciar sesión</a>
+                    <a class="dropdown-item" href="{% url 'listaClientes' %}"> <i class="fas fa-clipboard-list"></i> Lista de Usuarios</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-dollar-sign"></i> Convertidor
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <input type="text" class="dolar col-12">
+                        <input type="text" class="pesos col-12 mt-2" placeholder="Dolares">
+                        <input type="text" class="total col-12 mt-2" placeholder="Total">
+                        <button type="button" class="btn btn-warning pd btnConvertir col-12 mt-2">Convertir</button>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- NAVBAR -->
+
+    <!-- BLOCK CONTENIDO -->
+
+    {% if messages %}
+    {% for m in messages%}
+        <script>
+            Swal.fire(
+                "Realizado",
+                "{{m}}",
+                "success"
+            )
+        </script>
+    {% endfor %}
+    {% endif %}
+
+    {% block contenido %}
+    {% endblock %}
+
+    <!-- BLOCK CONTENIDO -->
+
+
+    <script>
+		$(function()
+		{
+			$.getJSON('https://mindicador.cl/api', function(data) {
+				$('.dolar').val(data.dolar.valor);
+				
+			}).fail(function() {
+				console.log('Error al consumir la API!');
+			});
+			
+			$('.btnConvertir').click(function()
+			{
+				let dolar = $('.dolar').val();
+				let pesos = $('.pesos').val();
+				let resultado = dolar * pesos;
+                total = resultado.toFixed(2)
+				$('.total').val(total);
+				return false;				
+			})
+		})
+	</script>
+
+    <script src="{% static 'app/js/main.js' %}"></script>
+    
+</body>
+</html>

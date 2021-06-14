@@ -1,0 +1,37 @@
+{% extends 'app/base.html' %}
+
+
+{% block contenido %}
+
+    <table class="table table-responsive-sm">
+        <thead class="thead-dark ">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Stock</th>
+                <th scope="col">$ Costo</th>
+                <th scope="col">$ Venta</th>
+                <th scope="col">Ingreso</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+    {% for p in productos %}
+        <tbody>
+            <tr>
+                <th scope="row">{{p.codigo_de_Barras}}</th>
+                <td>{{p.nombre}}</td>
+                <td>{{p.marca}}</td>
+                <td>{{p.stock}}</td>
+                <td>{{p.precio_Costo}}</td>
+                <td>{{p.precio_Venta}}</td>
+                <td>{{p.fecha_de_Ingreso}}</td>
+                <td><a class=" btn btn-warning col-md-4 col-sm-12" href="{% url 'modificarProducto' p.codigo_de_Barras%}">Modificar</a>
+                <a class="btn-danger btn col-md-4 col-sm-12" href="{% url 'eliminarProducto' p.codigo_de_Barras%}">Eliminar</a></td>
+            </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+
+
+{% endblock %}

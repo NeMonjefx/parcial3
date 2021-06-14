@@ -1,0 +1,38 @@
+
+{% extends 'app/base.html' %}
+
+
+{% block contenido %}
+
+    <table class="table table-responsive-sm">
+        <thead class="thead-dark ">
+            <tr>
+                <th scope="col">Rut</th>
+                <th scope="col">Dv</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">A. Paterno</th>
+                <th scope="col">A. Materno</th>
+                <th scope="col">Fecha de Nacimiento</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+    {% for c in clientes %}
+        <tbody>
+            <tr>
+                <td scope="row">{{c.rut}}</th>
+                <td scope="row">{{c.digito_verificador}}</th>
+                <td>{{c.nombre}}</td>
+                <td>{{c.apellido_Paterno}}</td>
+                <td>{{c.apellido_Materno}}</td>
+                <td>{{c.fecha_de_Nacimiento}}</td>
+                <td><a class=" btn btn-warning col-md-4 col-sm-12" href="{% url 'modificarCliente' c.rut%}">Modificar</a><a class="btn-danger btn col-md-4 col-sm-12" href="{% url 'eliminarCliente' c.rut%}">Eliminar</a></td>
+                            
+                
+            </tr>
+
+        </tbody>
+    {% endfor %}
+    </table>
+
+
+{% endblock %}

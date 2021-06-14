@@ -1,0 +1,117 @@
+
+body{
+    font-family: 'Pacifico', cursive;
+    background-color: #fefae0;
+}
+
+.navbar{
+    font-size: 22px;
+    font-family: 'Pacifico', cursive;
+}
+.bg-dark{
+    background-color: #073b4c!important;
+}
+.dropdown-item{
+    font-family: 'Dancing Script', cursive;
+}
+
+h2, h1{
+    text-align: center;
+    margin: 20px;
+    color: #1d3557;
+    text-shadow: 1px 1px  rgba(38,70,83,1);
+    text-decoration: underline wavy;
+
+
+}
+/* SLIDER */
+.container-slider{
+    box-shadow: 5px 0px 35px 0px rgba(38,70,83,1);
+    margin-top: 20px;
+}
+/* ----- */
+/* CARDS */
+.card{
+    font-family: 'Dancing Script', cursive;
+    margin: 20px auto;
+    box-shadow: 5px 0px 15px 0px rgba(38,70,83,1);
+}
+.card h5{
+    color: #e63946;
+    text-shadow: 1px 1px  rgba(38,70,83,1);
+    text-decoration: underline wavy;
+}
+.card p{
+    font-weight: bold;
+}
+.card span{
+    font-weight: normal;
+}
+.card a{
+    background: #073b4c!important;
+}
+.card .monedas{
+    font-size: 18px;
+}
+@media (max-width: 576px) {
+    .card{
+        margin-right: 40px;
+    }
+}
+/* ----- */
+
+/* REGISTRO LOGIN */
+.body-registro{
+    font-family: 'Dancing Script', cursive;
+}
+.body-registro .asterisco{
+    color: red;
+}
+.body-registro input, .body-registro select{
+    border: 1px black solid;
+}
+.body-registro .btn{
+    margin-top: 10px;
+}
+.btn{
+    color: white!important;
+}
+.btn-warning{
+    background-color: #f77f00!important
+}
+.btn-danger{
+    background-color: #6a040f!important
+}
+
+/* ----- */
+
+/* FOOTER */
+.card-header{
+    background-color: #073b4c!important;
+}
+.footer-index{
+    color: white;
+}
+.footer-index h5{
+    color: white;
+    text-decoration: none;
+}
+.footer-index .card-body{
+    background-color: #073b4c;
+}
+.footer-index ul li{
+    list-style: none;
+}
+.footer-index ul li a, .footer-index a{
+    color: white;
+}
+.footer-index a:hover{
+    color: #fb8500;
+}
+.footer-index ul li a:hover{
+    color: #fb8500;
+}
+
+.table{
+    overflow: scroll;
+}
